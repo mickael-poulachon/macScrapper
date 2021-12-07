@@ -1,0 +1,22 @@
+@import 'src/assets/scss/_variables.scss';
+
+.menu{
+  display: flex;
+  background-color: $primary;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+
+  .icon {
+    font-size:48px;
+
+    ::ng-deep .mat-icon{
+      height:48px !important;
+      width:48px !important;
+      font-size:48px !important;
+    }
+  }
+}
