@@ -1,1 +1,50 @@
-<p>scrapper-account works!</p>
+<div class="mat-card" *ngIf="formGroup">
+  <mat-toolbar color="primary">
+    <span class="fill-remaining-space">Votre compte sur ScreenScrapper</span>
+  </mat-toolbar>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form container-account">
+
+    <mat-form-field class="form-element" appearance="fill">
+      <input matInput placeholder="Emailaddress" formControlName="ssid">
+      <mat-error *ngIf="!formGroup.controls['ssid'].valid && formGroup.controls['ssid'].touched">
+        Veuillez renseigner votre identifiant
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element" appearance="fill">
+      <input matInput placeholder="Password" formControlName="password">
+      <mat-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
+        Veuillez renseigner votre mot de passe
+      </mat-error>
+    </mat-form-field>
+
+    <div class="text-align-center" *ngIf="!requestVerification">
+      <button mat-flat-button color="primary" [disabled]="!formGroup.valid">Enregistrer
+        <mat-icon aria-hidden="false" aria-label="Example home icon">save</mat-icon>
+
+      </button>
+    </div>
+  </form>
+
+  <ng-container *ngIf="requestVerification">
+    <div class="check-authentification">Vérification en cours
+      <app-loader></app-loader>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="userInformationsValid">
+    <div class="alert-valid">
+      <span>Votre compte est vérifié</span>
+      <mat-icon aria-hidden="false" aria-label="Example home icon">check</mat-icon>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="userInformationsValid === false">
+    <div class="alert-error">
+      <span>Une erreur est survenue</span>
+      <mat-icon aria-hidden="false" aria-label="Example home icon">error</mat-icon>
+    </div>
+  </ng-container>
+
+
+</div>

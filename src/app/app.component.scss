@@ -10,3 +10,10 @@
 ::ng-deep .mat-drawer-inner-container{
   overflow: hidden !important;
 }
+
+.mat-drawer-content{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
